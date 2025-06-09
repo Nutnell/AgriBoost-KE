@@ -1564,14 +1564,29 @@ html.dark .footer-section {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: var(--gap-8);
-    font-size: 32px;
+    gap: 8px;
+    font-size: 14px;
     color: var(--gray-400);
 }
+
 @media (min-width: 768px) {
     .footer-stats-block {
         justify-content: flex-start;
     }
+}
+
+.icon-users::before {
+    content: "👥";
+    font-size: 16px;
+    color: var(--gray-400);
+}
+
+html.dark .icon-users::before {
+    color: var(--gray-300);
+}
+
+#visitor-count {
+    font-weight: 700;
 }
 
 

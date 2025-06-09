@@ -300,3 +300,13 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+    const visitorCountSpan = document.getElementById("visitor-count");
+    if (visitorCountSpan) {
+        let visitCount = parseInt(localStorage.getItem('siteVisitCount')) || 0;
+        visitCount++;
+        localStorage.setItem('siteVisitCount', visitCount.toString());
+        visitorCountSpan.textContent = visitCount.toLocaleString();
+    }
+});
