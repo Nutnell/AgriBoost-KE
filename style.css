@@ -1,3 +1,42 @@
+/*base color palette for the site */
+:root {
+    --green-50: #f0fdf4;
+    --green-100: #dcfce7;
+    --green-200: #bbf7d0;
+    --green-300: #86efac;
+    --green-400: #4ade80;
+    --green-500: #22c55e;
+    --green-600: #16a34a;
+    --green-700: #15803d;
+    --green-800: #166534;
+    --green-900: #14532d;
+
+    --amber-50: #fffdf0;
+    --amber-100: #fefce8;
+    --amber-200: #fde68a;
+    --amber-300: #fcd34d;
+    --amber-400: #fbbf24;
+    --amber-500: #f59e0b;
+    --amber-600: #d97706;
+    --amber-700: #b45309;
+    --amber-800: #92400e;
+    --amber-900: #78350f;
+
+    --gray-50: #f9fafb;
+    --gray-200: #e5e7eb;
+    --gray-300: #d1d5db;
+    --gray-400: #9ca3af;
+    --gray-500: #6b7280;
+    --gray-600: #4b5563;
+    --gray-700: #374151;
+    --gray-800: #1f2937;
+    --gray-900: #111827;
+    --gray-950: #030712;
+
+    --white: #ffffff;
+    --black: #000000;
+}
+
 /* Hero Section Styles */
 .hero-section {
     position: relative;
@@ -290,3 +329,240 @@ html.dark .our-story-body-text-block {
 html.dark .our-story-highlight-paragraph {
     color: var(--green-400);
 }
+
+.main-container {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.section-padding-x {
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 48px;
+}
+
+.section-title {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: var(--gray-900);
+}
+html.dark .section-title {
+    color: var(--white);
+}
+
+.section-subtitle {
+    font-size: 20px;
+    color: var(--gray-600);
+}
+html.dark .section-subtitle {
+    color: var(--gray-300);
+}
+
+/* Text Sizing and Weights*/
+.text-lg { font-size: 18px; }
+.text-xl { font-size: 20px; }
+.text-3xl { font-size: 30px; }
+.text-6xl { font-size: 64px; }
+.font-bold { font-weight: 700; }
+.font-semibold { font-weight: 600; }
+.line-height-relaxed { line-height: 1.625; }
+
+/* Flexbox utilities*/
+.flex { display: flex; }
+.items-center { align-items: center; }
+.justify-between { justify-content: space-between; }
+
+/* Gap utilities*/
+.gap-8 { gap: 8px; }
+
+/* Sizing Utilities*/
+.max-w-4xl { max-width: 896px; }
+
+/* Borders & Shadows*/
+.rounded-lg { border-radius: 8px; }
+.overflow-hidden { overflow: hidden; }
+.relative { position: relative; }
+.border-0 { border-width: 0; }
+.border-left-4 { border-left-width: 4px; border-left-style: solid; }
+
+html.dark .text-white { color: var(--white); }
+html.dark .text-gray-300 { color: var(--gray-300); }
+html.dark .text-green-300 { color: var(--green-300); }
+html.dark .text-green-400 { color: var(--green-400); }
+
+
+.background-white { background-color: var(--white); }
+.background-gray-800 { background-color: var(--gray-800); }
+.background-green-50 { background-color: var(--green-50); }
+
+/*PRODUCTS & SERVICES SECTION*/
+.products-services-section {
+    background-color: #DCFCE7;
+    background-image: none;
+}
+html.dark .products-services-section {
+    background-image: linear-gradient(to right, var(--gray-800), var(--gray-700));
+}
+
+.product-carousel-wrapper {
+    position: relative;
+    max-width: 896px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.card {
+    background-color: var(--white);
+    border-radius: 8px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+    border-width: 0;
+    overflow: hidden;
+}
+html.dark .card {
+    background-color: var(--gray-800);
+}
+
+
+.product-carousel-card {
+}
+
+.product-carousel-header {
+    background-color: #15871C;
+    background-image: none;
+    color: #DCFCE7;
+    text-align: center;
+    padding-top: 32px;
+    padding-bottom: 32px;
+}
+
+.product-icon-display {
+    font-size: 64px;
+    margin-bottom: 16px;
+}
+
+.product-name-display {
+    font-weight: 700;
+    font-size: 30px;
+    margin-bottom: 8px;
+}
+
+.product-label-badge {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #DCFCE7;
+    font-size: 18px;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    display: inline-block;
+    border-radius: 4px;
+}
+
+.product-carousel-content {
+    padding: 32px;
+}
+
+.product-description-display {
+    font-size: 18px;
+    color: var(--gray-700);
+    margin-bottom: 24px;
+    line-height: 1.625;
+}
+html.dark .product-description-display {
+    color: var(--gray-300);
+}
+
+.product-feature-highlight {
+    background-color: var(--green-50);
+    padding: 24px;
+    border-radius: 8px;
+    border-left-width: 4px;
+    border-left-style: solid;
+    border-color: var(--green-500);
+}
+html.dark .product-feature-highlight {
+    background-color: rgba(20, 83, 45, 0.3);
+}
+
+.product-feature-title {
+    font-weight: 700;
+    color: var(--green-800);
+    margin-bottom: 8px;
+}
+html.dark .product-feature-title {
+    color: var(--green-300);
+}
+
+.product-method-line, .product-impact-line {
+    color: var(--green-700);
+    margin-bottom: 8px;
+}
+html.dark .product-method-line, html.dark .product-impact-line {
+    color: var(--green-400);
+}
+
+.product-carousel-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 24px;
+}
+
+.carousel-nav-button {
+    background-color: transparent;
+    border: 1px solid var(--gray-200);
+    color: var(--gray-900);
+    padding: 12px 24px;
+    font-size: 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+html.dark .carousel-nav-button {
+    border-color: var(--gray-600);
+    color: var(--white);
+}
+
+html.dark .carousel-nav-button:hover {
+    background-color: rgba(20, 83, 45, 0.2);
+}
+
+
+.product-pagination-dots {
+    display: flex;
+    gap: 8px;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 9999px;
+    transition: background-color 0.2s ease;
+    cursor: pointer;
+}
+.dot.active {
+    background-color: var(--green-600);
+}
+.dot:not(.active) {
+    background-color: var(--gray-300);
+}
+html.dark .dot:not(.active) {
+    background-color: var(--gray-600);
+}
+
+.icon-chevron-left::before { content: '←'; }
+.icon-chevron-right::before { content: '→'; }
+
