@@ -37,7 +37,7 @@
     --black: #000000;
 }
 
-/* Hero Section Styles */
+/* HERO SECTION */
 .hero-section {
     position: relative;
     min-height: 100vh;
@@ -172,7 +172,7 @@ html.dark .get-started-button:hover {
     color: #111827;
 }
 
-/* Theme toggle Styles */
+/* THEME TOGGLE STYLES */
 .theme-toggle {
     position: fixed;
     top: 20px;
@@ -247,7 +247,7 @@ html.dark .section-padding.dark\:our story dark mode {
     background-color: var(--gray-900);/
 }
 
-/* Our Story Section Styles */
+/* OUR STORY SECTION */
 .our-story-section {
     padding-top: 80px;
     padding-bottom: 80px;
@@ -330,6 +330,7 @@ html.dark .our-story-highlight-paragraph {
     color: var(--green-400);
 }
 
+/*PRODUCTS & SERVICES SECTION*/
 .main-container {
     max-width: 1200px;
     margin-left: auto;
@@ -403,7 +404,6 @@ html.dark .text-green-400 { color: var(--green-400); }
 .background-gray-800 { background-color: var(--gray-800); }
 .background-green-50 { background-color: var(--green-50); }
 
-/*PRODUCTS & SERVICES SECTION*/
 .products-services-section {
     background-color: #DCFCE7;
     background-image: none;
@@ -566,6 +566,7 @@ html.dark .dot:not(.active) {
 .icon-chevron-left::before { content: '←'; }
 .icon-chevron-right::before { content: '→'; }
 
+/*TESTIMONIALS SECTION*/
 .main-container {
     max-width: 1200px;
     margin-left: auto;
@@ -575,8 +576,8 @@ html.dark .dot:not(.active) {
 .section-padding-x {
     padding-left: 16px;
     padding-right: 16px;
-    padding-top: 80px; /* Default top padding for sections */
-    padding-bottom: 80px; /* Default bottom padding for sections */
+    padding-top: 80px;
+    padding-bottom: 80px;
 }
 
 .section-header {
@@ -620,11 +621,11 @@ html.dark .section-subtitle {
 .max-w-4xl { max-width: 896px; }
 
 /* Borders & Shadows */
-.card { /* General card styles, apply to any .card */
+.card {
     background-color: var(--white);
     border-radius: 8px;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1); /* shadow-2xl */
-    border-width: 0; /* border-0 */
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+    border-width: 0;
     overflow: hidden;
 }
 html.dark .card {
@@ -634,7 +635,6 @@ html.dark .card {
 .shadow-lg { box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); }
 
 
-/*TESTIMONIALS SECTION*/
 .testimonials-section {
     background-color: var(--white);
 }
@@ -756,3 +756,91 @@ html.dark .testimonial-card-amber .testimonial-author-role {
 }
 
 .icon-quote::before { content: '‟'; }
+
+/* BRAND VALUES SECTION*/
+.main-container {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.section-padding-x {
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+
+/* Text Sizing and Weights */
+.text-4xl { font-size: 36px; }
+.font-bold { font-weight: 700; }
+
+/* Flexbox utilities */
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.justify-center { justify-content: center; }
+.items-center { align-items: center; }
+@media (min-width: 768px) {
+    .flex-col-md-row { flex-direction: row; }
+}
+
+/* Gap utilities */
+.gap-32 { gap: 32px; }
+
+.text-white { color: var(--white); }
+.text-green-100 { color: var(--green-100); }
+
+.brand-values-section {
+    padding-top: 64px;
+    padding-bottom: 64px;
+    background-color: var(--green-800);
+    background-image: none;
+}
+html.dark .brand-values-section {
+    background-color: var(--green-900);
+    background-image: none;
+}
+
+.brand-values-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+    text-align: center;
+    width: 100%;
+}
+@media (min-width: 768px) {
+    .brand-values-list {
+        flex-direction: row;
+        justify-content: space-around;
+    }
+}
+
+.brand-value-item {
+    color: var(--white);
+    flex-shrink: 0;
+}
+
+.brand-value-heading {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.brand-value-description {
+    color: var(--green-100);
+}
+
+.brand-value-separator {
+    width: 1px;
+    height: 64px;
+    background-color: rgba(255, 255, 255, 0.3);
+    display: none;
+    flex-shrink: 0;
+}
+@media (min-width: 768px) {
+    .brand-value-separator {
+        display: block;
+    }
+}
