@@ -107,7 +107,7 @@
 }
 
 html.dark .get-started-button {
-    background-color: #15A815;
+    background-color: #4c614c;
 }
 html.dark .get-started-button:hover {
     background-color: #128F12;
@@ -133,4 +133,69 @@ html.dark .get-started-button:hover {
     color: #111827;
 }
 
+/* Theme toggle Styles */
+.theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 50;
+}
 
+.theme-toggle-button {
+    position: relative;
+    width: 60px;
+    height: 30px;
+    border-radius: 15px;
+    background-color: var(--gray-300); 
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5px;
+    overflow: hidden;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+html.dark .theme-toggle-button {
+    background-color: var(--gray-700);
+}
+
+.sun-icon, .moon-icon {
+    position: absolute;
+    font-size: 20px;
+    line-height: 1;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.sun-icon {
+    left: 5px;
+    transform: translateX(0);
+    opacity: 1;
+}
+
+html.dark .sun-icon {
+    transform: translateX(-30px);
+    opacity: 0;
+}
+
+.moon-icon {
+    right: 5px;
+    transform: translateX(0);
+    opacity: 0;
+}
+
+html.dark .moon-icon {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+
+body {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+html.dark body {
+    color: var(--gray-100);
+    background-color: var(--gray-900);
+}
