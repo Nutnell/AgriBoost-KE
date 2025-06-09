@@ -1335,6 +1335,7 @@ html.dark .send-chat-btn:hover {
 .icon-message-circle-small::before { content: '💬'; font-size: 16px; }
 .icon-send::before { content: '➤'; color: var(--black); }
 
+/* CONTACT FORM SECTION */
 .main-container {
     max-width: 1200px;
     margin-left: auto;
@@ -1344,8 +1345,8 @@ html.dark .send-chat-btn:hover {
 .section-padding-x {
     padding-left: 16px;
     padding-right: 16px;
-    padding-top: 80px; /* Default top padding for sections */
-    padding-bottom: 80px; /* Default bottom padding for sections */
+    padding-top: 80px;
+    padding-bottom: 80px;
 }
 
 .section-header {
@@ -1371,13 +1372,11 @@ html.dark .section-subtitle {
     color: var(--gray-300);
 }
 
-/* Text Sizing and Weights */
 .text-lg { font-size: 18px; }
 .font-bold { font-weight: 700; }
 
-/* General Card Style (reused from other sections) */
 .card {
-    background-color: var(--white); /* Ensures card itself is FFFFFF */
+    background-color: var(--white);
     border-radius: 8px;
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
     border-width: 0;
@@ -1389,12 +1388,10 @@ html.dark .card {
 
 .card-content {
     padding: 32px;
-    /* This will inherit background-color from .card, which is now explicitly var(--white) */
 }
 
-/* General Button Styles (reused from other sections) */
 .button-primary {
-    background-color: var(--green-600); /* Example green button, adjust as per site's main button color */
+    background-color: var(--green-600);
     color: var(--white);
     padding: 16px 32px;
     font-size: 18px;
@@ -1409,7 +1406,7 @@ html.dark .card {
 }
 
 .button-primary:hover {
-    background-color: var(--green-700); /* Darker shade for hover */
+    background-color: var(--green-700);
 }
 html.dark .button-primary {
     background-color: var(--green-600);
@@ -1418,17 +1415,15 @@ html.dark .button-primary:hover {
     background-color: var(--green-700);
 }
 
-
-/* --- CONTACT FORM SECTION (Semantic Classes) --- */
 .contact-form-section {
-    background-color: var(--green-100); /* Dominant background color: DCFCE7 */
+    background-color: var(--green-100);
 }
 html.dark .contact-form-section {
-    background-color: var(--gray-800); /* Dark mode background */
+    background-color: var(--gray-800);
 }
 
 .contact-form-card {
-    max-width: 768px; /* max-w-2xl, common width for forms/content cards */
+    max-width: 768px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -1436,37 +1431,37 @@ html.dark .contact-form-section {
 .contact-form {
     display: flex;
     flex-direction: column;
-    gap: 24px; /* Gap between form groups */
+    gap: 24px;
 }
 
 .form-group {
     display: flex;
     flex-direction: column;
-    gap: 8px; /* Gap between label and input */
+    gap: 8px;
 }
 
 .form-label {
-    font-weight: 600; /* font-semibold */
-    color: var(--gray-900); /* Dark text for label */
+    font-weight: 600;
+    color: var(--gray-900);
     font-size: 16px;
 }
 html.dark .form-label {
     color: var(--white);
 }
 
-.input-field { /* Generic style for text inputs */
-    background-color: var(--f2fbf5); /* Text box background color: F2FBF5 */
+.input-field {
+    background-color: var(--f2fbf5);
     padding: 12px 16px;
     border: 1px solid var(--gray-300);
     border-radius: 6px;
     font-size: 16px;
-    color: var(--gray-900); /* Text color in input */
+    color: var(--gray-900); 
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 .input-field:focus {
     outline: none;
     border-color: var(--green-500);
-    box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.3); /* green-500 with opacity */
+    box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.3);
 }
 .input-field::placeholder {
     color: var(--gray-500);
@@ -1480,17 +1475,17 @@ html.dark .input-field::placeholder {
     color: var(--gray-400);
 }
 
-.textarea-field { /* Style for the textarea */
-    min-height: 120px; /* min-h-32 */
-    resize: vertical; /* Allow vertical resizing only */
-    background-color: var(--f2fbf5); /* Text box background color: F2FBF5 */
+.textarea-field {
+    min-height: 120px;
+    resize: vertical;
+    background-color: var(--f2fbf5);
     padding: 12px 16px;
     border: 1px solid var(--gray-300);
     border-radius: 6px;
     font-size: 16px;
-    color: var(--gray-900); /* Text color in textarea */
+    color: var(--gray-900);
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
-    font-family: inherit; /* Inherit font from body */
+    font-family: inherit;
 }
 .textarea-field:focus {
     outline: none;
@@ -1510,6 +1505,192 @@ html.dark .textarea-field::placeholder {
 }
 
 .contact-submit-button {
-    width: 100%; /* Set width to 100% to match input fields */
-    /* Removed align-self: flex-start; as 100% width makes it stretch */
+    width: 100%;
+}
+
+/*FOOTER SECTION*/
+.main-container {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.section-padding-x {
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.items-center { align-items: center; }
+.gap-8 { gap: 8px; }
+.gap-32 { gap: 32px; }
+
+.margin-bottom-16 { margin-bottom: 16px; }
+.margin-bottom-32 { margin-bottom: 32px; }
+.padding-top-32 { padding-top: 32px; }
+
+.text-white { color: var(--white); }
+.text-sm { font-size: 14px; }
+.text-lg { font-size: 18px; }
+.text-center { text-align: center; }
+.font-bold { font-weight: 700; }
+.font-semibold { font-weight: 600; }
+.block { display: block; }
+.transition-colors { transition-property: color, background-color, border-color, text-decoration-color, fill, stroke; transition-duration: 0.15s; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); }
+
+.footer-section {
+    background-color: var(--green-700);
+    color: var(--white);
+    padding-top: 48px;
+    padding-bottom: 48px;
+}
+html.dark .footer-section {
+    background-color: var(--gray-950);
+}
+
+.footer-content-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 64px;
+    margin-bottom: 32px;
+}
+@media (min-width: 768px) {
+    .footer-content-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.footer-brand-column {
+    text-align: center;
+}
+@media (min-width: 768px) {
+    .footer-brand-column {
+        text-align: left;
+    }
+}
+
+
+.footer-logo-title {
+    font-size: 32px;
+    font-weight: var(--font-bold);/
+    margin-bottom: 24px;
+    background-color: #f59e0b;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.footer-description-text {
+    font-size: 24px;
+    color: var(--gray-300);
+    margin-bottom: 16px;
+}
+
+.footer-stats-block {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--gap-8);
+    font-size: 32px;
+    color: var(--gray-400);
+}
+@media (min-width: 768px) {
+    .footer-stats-block {
+        justify-content: flex-start;
+    }
+}
+
+
+.icon-users::before {
+    content: "👥";
+}
+
+.footer-links-column {
+    text-align: center;
+}
+@media (min-width: 768px) {
+    .footer-links-column {
+        text-align: center;
+    }
+}
+
+.footer-contact-column {
+    text-align: center;
+}
+@media (min-width: 768px) {
+    .footer-contact-column {
+        text-align: left;
+    }
+}
+
+.footer-links-title {
+    font-size: 32px;
+    font-weight: var(--font-semibold);
+    margin-bottom: 24px;
+    color: var(--white);
+}
+
+.footer-links-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.footer-link-item {
+    display: block;
+    color: var(--gray-300);
+    text-decoration: none;
+    font-size: 32px;
+}
+.footer-link-item:hover {
+    color: var(--green-400);
+    text-decoration: underline;
+}
+
+.footer-contact-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.footer-contact-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--gap-8);
+    color: var(--gray-300);
+    text-decoration: none;
+    font-size: 32px;
+}
+@media (min-width: 768px) {
+    .footer-contact-item {
+        justify-content: flex-start;
+    }
+}
+
+.footer-contact-item:hover {
+    color: var(--green-400);
+}
+
+
+.inline-icon {
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
+    flex-shrink: 0;
+}
+
+.footer-bottom {
+    border-top: 1px solid var(--gray-800);
+    padding-top: var(--padding-top-32);
+    text-align: center;
+}
+
+.footer-bottom p {
+    font-size: 32px;
+    color: var(--gray-400);
 }
