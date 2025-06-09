@@ -266,3 +266,37 @@ document.addEventListener("DOMContentLoaded", () => {
     hideTypingIndicator();
 
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+    const faqQuestions = document.querySelectorAll(".faq-question");
+
+    faqQuestions.forEach(question => {
+        question.addEventListener("click", () => {
+            const answer = question.nextElementSibling;
+
+            faqQuestions.forEach(otherQuestion => {
+                if (otherQuestion !== question && otherQuestion.classList.contains("is-active")) {
+                    otherQuestion.classList.remove("is-active");
+                    otherQuestion.nextElementSibling.classList.remove("is-active");
+                    otherQuestion.nextElementSibling.style.maxHeight = "0";
+                    otherQuestion.nextElementSibling.style.paddingBottom = "0";
+                    otherQuestion.nextElementSibling.style.paddingTop = "0";
+                }
+            });
+
+            question.classList.toggle("is-active");
+
+            if (question.classList.contains("is-active")) {
+                answer.classList.add("is-active");
+                answer.style.maxHeight = answer.scrollHeight + "px";
+                answer.style.paddingBottom = "20px";
+                answer.style.paddingTop = "8px";
+            } else {
+                answer.classList.remove("is-active");
+                answer.style.maxHeight = "0";
+                answer.style.paddingBottom = "0";
+                answer.style.paddingTop = "0";
+            }
+        });
+    });
+});
