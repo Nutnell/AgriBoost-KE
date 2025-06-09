@@ -310,3 +310,83 @@ document.addEventListener("DOMContentLoaded", () => {
         visitorCountSpan.textContent = visitCount.toLocaleString();
     }
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+    const contactForm = document.querySelector(".contact-form");
+    const nameInput = document.getElementById("name");
+    const emailInput = document.getElementById("email");
+    const messageTextarea = document.getElementById("message");
+
+    function showError(element, message) {
+        let errorElement = element.nextElementSibling;
+        if (!errorElement || !errorElement.classList.contains('error-message')) {
+            errorElement = document.createElement('div');
+            errorElement.classList.add('error-message', 'text-red-500', 'text-sm', 'mt-1');
+            element.parentNode.insertBefore(errorElement, element.nextSibling);
+        }
+        errorElement.textContent = message;
+        element.classList.add('border-red-500');
+        element.classList.remove('border-gray-300');
+    }
+
+    function clearError(element) {
+        const errorElement = element.nextElementSibling;
+        if (errorElement && errorElement.classList.contains('error-message')) {
+            errorElement.remove();
+        }
+        element.classList.remove('border-red-500');
+        element.classList.add('border-gray-300');
+    }
+
+    function validateForm() {
+        let isValid = true;
+
+        if (nameInput.value.trim() === "") {
+            showError(nameInput, "Full Name is required.");
+            isValid = false;
+        } else {
+            clearError(nameInput);
+        }
+
+        const emailValue = emailInput.value.trim();
+        if (emailValue === "") {
+            showError(emailInput, "Email Address is required.");
+            isValid = false;
+        } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailValue)) {
+            showError(emailInput, "Please enter a valid email address.");
+            isValid = false;
+        } else {
+            clearError(emailInput);
+        }
+
+        if (messageTextarea.value.trim() === "") {
+            showError(messageTextarea, "Message cannot be empty.");
+            isValid = false;
+        } else {
+            clearError(messageTextarea);
+        }
+
+        return isValid;
+    }
+
+    if (contactForm) {
+        contactForm.addEventListener("submit", (event) => {
+            event.preventDefault();
+
+            if (validateForm()) {
+                console.log("Form submitted successfully!");
+                console.log("Name:", nameInput.value.trim());
+                console.log("Email:", emailInput.value.trim());
+                console.log("Message:", messageTextarea.value.trim());
+                alert("Thank you for your message! We will get back to you soon.");
+                contactForm.reset();
+            } else {
+                console.log("Form validation failed. Please correct the errors.");
+            }
+        });
+
+        nameInput.addEventListener("input", () => clearError(nameInput));
+        emailInput.addEventListener("input", () => clearError(emailInput));
+        messageTextarea.addEventListener("input", () => clearError(messageTextarea));
+    }
+})
