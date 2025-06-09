@@ -35,24 +35,9 @@
 
     --white: #ffffff;
     --black: #000000;
-
-     --green-100: #dcfce7; /* New dominant section background */
-    --green-500: #22c55e;
-    --green-600: #16a34a;
-    --green-700: #15803d; /* Assuming it's used for button hover or similar from other sections */
-
-    --gray-50: #f9fafb; /* Original light mode section background, now overridden */
-    --gray-300: #d1d5db; /* Input border */
-    --gray-600: #4b5563; /* Subtitle, label */
-    --gray-700: #374151; /* Placeholder, dark mode input */
-    --gray-800: #1f2937; /* Dark mode section background */
-    --gray-900: #111827; /* Section title */
-
-    --white: #ffffff; /* Card background, text, card-content background */
     --f2fbf5: #F2FBF5;
-
-    
 }
+
 
 /* HERO SECTION */
 .hero-section {

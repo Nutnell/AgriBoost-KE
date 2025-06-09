@@ -118,3 +118,151 @@ document.addEventListener("DOMContentLoaded", () => {
 
     updateProductDisplay();
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+    const chatInput = document.getElementById("chat-input");
+    const sendChatBtn = document.getElementById("send-chat-btn");
+    const chatDisplay = document.querySelector(".chat-display");
+    const aiTypingIndicator = document.querySelector(".ai-typing-indicator");
+
+    const knowledgeBase = [
+        {
+          "keywords": ["agriboost", "company", "who are you", "about us", "agriboost ke", "story", "purpose", "mission"],
+          "answer": "AgriBoost KE empowers Kenyan agriculture by providing affordable feeds and cutting-edge machinery, ensuring sustainable farming for all. We were founded to address challenges like limited access to tools and unaffordable livestock feeds, especially during dry seasons, and to combat rising fertilizer prices and dishonest practices."
+        },
+        {
+          "keywords": ["feeds", "livestock feeds", "animal feed", "poultry feed", "dairy feed", "beef feed", "broiler feed", "layer feed", "manure", "hay", "silage", "corn husks", "nutrition"],
+          "answer": "Our Enhanced Livestock Feeds are premium nutrition solutions. They include manure, hay, silage, corn husks for poultry, and specialised feed for dairy, beef, broilers, and layers. Designed for maximum nutrition and affordability, we use locally sourced feed alternatives to reduce costs and ensure availability during dry seasons."
+        },
+        {
+          "keywords": ["machinery", "rental", "equipment", "machines", "threshers", "harvesters", "drones", "weed control", "rent equipment", "tools", "advanced machinery"],
+          "answer": "We offer Rare Farming Machinery Rental, providing access to hard-to-find machines such as multi-crop threshers, potato harvesters, smart irrigation drones, and laser weed control machines. Farmers can rent these efficient, high-tech tools without full investment costs through our short-term hiring program."
+        },
+        {
+          "keywords": ["multi-crop thresher", "thresher rental price", "threshing"],
+          "answer": "The Multi-Crop Thresher efficiently processes wheat, rice, barley, and other grains. Its rental price is KSh 5,000 per day."
+        },
+        {
+          "keywords": ["potato harvester", "potato machine rental price", "potato digging"],
+          "answer": "The Potato Harvester is an automated potato digging and collection system. Its rental price is KSh 8,000 per day."
+        },
+        {
+          "keywords": ["smart irrigation drone", "irrigation drone rental price", "drone for farm", "watering", "precision watering"],
+          "answer": "The Smart Irrigation Drone offers GPS-guided precision watering with real-time monitoring. Its rental price is KSh 3,500 per day."
+        },
+        {
+          "keywords": ["laser weed control machine", "weed control rental price", "chemical-free weed", "weed elimination"],
+          "answer": "The Laser Weed Control Machine provides chemical-free weed elimination using precision laser technology. Its rental price is KSh 6,500 per day."
+        },
+        {
+          "keywords": ["consultation services", "farm consultation", "expert guidance", "farm productivity", "fertilizers", "fake fertilizers", "optimize yields", "data-driven"],
+          "answer": "Our Farm Consultation Services offer expert guidance on maximizing farm productivity, detecting fake fertilizers, and effectively using advanced machinery. We help farmers optimize yields and reduce losses through expert knowledge and data-driven agricultural analysis."
+        },
+        {
+          "keywords": ["team", "who is nathaniel", "rashid", "aisha", "brian", "employees", "staff", "founder", "ceo", "who founded", "company founder", "leadership"],
+          "answer": "Our team includes: Nathaniel (Founder/CEO), Rashid (Operations Manager), Aisha (Lead Agricultural Specialist), and Brian (Marketing and Outreach)."
+        },
+        {
+          "keywords": ["contact", "email", "phone", "location", "address", "get in touch", "where are you", "how to contact"],
+          "answer": "You can reach AgriBoost KE via email at info@agriboostke.com. Our physical location is Nairobi, Kenya. Our phone number is also available for direct contact."
+        },
+        {
+          "keywords": ["values", "affordable", "innovative", "sustainable", "mission", "core values"],
+          "answer": "AgriBoost KE's core brand values are: affordability (fair pricing for all farmers), innovation (cutting-edge solutions), and sustainability (building lasting prosperity for Kenyan agriculture)."
+        },
+        {
+          "keywords": ["website purpose", "what does agriboost ke do"],
+          "answer": "AgriBoost KE aims to transform Kenyan agriculture by providing affordable feeds and cutting-edge machinery, empowering even the smallest farmer to significantly transform their yield."
+        },
+        {
+          "keywords": ["how many visitors", "visitors"],
+          "answer": "We've had over 1,247 visitors to our website, and counting!"
+        }
+    ];
+
+    function getBotResponse(userMessage) {
+        const lowerCaseMessage = userMessage.toLowerCase();
+        let bestResponse = "I'm sorry, I don't have information on that topic. Please try asking about our products, services, team, or contact details.";
+
+        for (const entry of knowledgeBase) {
+            if (entry.keywords.some(keyword => lowerCaseMessage.includes(keyword.toLowerCase()))) {
+                bestResponse = entry.answer;
+                break;
+            }
+        }
+        return bestResponse;
+    }
+
+    function addMessageToChat(sender, message, isAI = false) {
+        const messageDiv = document.createElement("div");
+        messageDiv.classList.add("chat-message");
+        if (isAI) {
+            messageDiv.classList.add("ai-message");
+        } else {
+            messageDiv.classList.add("user-message");
+        }
+
+        let avatarHtml = '';
+        if (isAI) {
+            avatarHtml = `<div class="chat-avatar ai-avatar">AI</div>`;
+        } else {
+            avatarHtml = `<div class="chat-avatar user-avatar">You</div>`;
+        }
+
+        messageDiv.innerHTML = `
+            ${avatarHtml}
+            <div class="chat-bubble ${isAI ? 'ai-bubble' : 'user-bubble'}">
+                <p class="chat-text">${message}</p>
+            </div>
+        `;
+
+        if (aiTypingIndicator && chatDisplay.contains(aiTypingIndicator)) {
+             chatDisplay.insertBefore(messageDiv, aiTypingIndicator);
+        } else {
+             chatDisplay.appendChild(messageDiv);
+        }
+        chatDisplay.scrollTop = chatDisplay.scrollHeight;
+    }
+
+    function showTypingIndicator() {
+        if (aiTypingIndicator) {
+            aiTypingIndicator.style.display = 'flex';
+            chatDisplay.scrollTop = chatDisplay.scrollHeight;
+        }
+    }
+
+    function hideTypingIndicator() {
+        if (aiTypingIndicator) {
+            aiTypingIndicator.style.display = 'none';
+        }
+    }
+
+    async function sendMessage() {
+        const userMessage = chatInput.value.trim();
+        if (userMessage === "") {
+            return;
+        }
+
+        addMessageToChat("You", userMessage);
+        chatInput.value = "";
+        showTypingIndicator();
+
+        await new Promise(resolve => setTimeout(resolve, 1000));
+
+        const botResponse = getBotResponse(userMessage);
+        hideTypingIndicator();
+        addMessageToChat("AI", botResponse, true);
+    }
+
+    addMessageToChat("AI", "Hello! I'm AgriBot, your assistant for AgriBoost KE. Ask me about our products, services, or company!", true);
+
+    sendChatBtn.addEventListener("click", sendMessage);
+    chatInput.addEventListener("keypress", (event) => {
+        if (event.key === "Enter") {
+            sendMessage();
+        }
+    });
+
+    hideTypingIndicator();
+
+});
