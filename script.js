@@ -507,3 +507,29 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+    const footerLinks = document.querySelectorAll('.footer-link-item');
+
+    footerLinks.forEach(link => {
+        link.addEventListener('click', function(event) {
+            event.preventDefault();
+
+            const targetId = this.getAttribute('href');
+            if (targetId && targetId.startsWith('#')) {
+                const targetElement = document.querySelector(targetId);
+
+                if (targetElement) {
+                    setTimeout(() => {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }, 50);
+                } else {
+                    console.warn(`Target section with ID '${targetId}' not found.`);
+                }
+            }
+        });
+    });
+});

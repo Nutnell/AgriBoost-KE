@@ -39,6 +39,10 @@
 }
 
 /* UTILITY CLASSES */
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
 .main-container {
     max-width: 1200px;
     margin-left: auto;
@@ -1218,8 +1222,9 @@ html.dark .contact-form-section {
 .footer-section {
     background-color: var(--green-700);
     color: var(--white);
-    padding-top: 48px;
-    padding-bottom: 48px;
+    height: fit-content;
+    padding-top: 24px;
+    padding-bottom: 12px;
 }
 html.dark .footer-section {
     background-color: var(--gray-950);
@@ -1283,6 +1288,8 @@ html.dark .footer-section {
 
 .footer-links-column {
     text-align: center;
+    font-size: 24px;
+    padding-left: 72px;
 }
 @media (min-width: 768px) {
     .footer-links-column {
@@ -1300,10 +1307,11 @@ html.dark .footer-section {
 }
 
 .footer-links-title {
-    font-size: 32px;
+    font-size: 24px;
     font-weight: var(--font-semibold);
     margin-bottom: 24px;
     color: var(--white);
+    text-align: left;
 }
 
 .footer-links-list {
@@ -1319,7 +1327,8 @@ html.dark .footer-section {
     display: block;
     color: var(--gray-300);
     text-decoration: none;
-    font-size: 32px;
+    text-align: left;
+    font-size: 24px;
 }
 .footer-link-item:hover {
     color: var(--green-400);
@@ -1339,7 +1348,7 @@ html.dark .footer-section {
     gap: var(--gap-8);
     color: var(--gray-300);
     text-decoration: none;
-    font-size: 32px;
+    font-size: 24px;
 }
 @media (min-width: 768px) {
     .footer-contact-item {
@@ -1365,7 +1374,8 @@ html.dark .footer-section {
 }
 
 .footer-bottom p {
-    font-size: 32px;
+    font-size: 24px;
+    padding-top: 24px;
     color: var(--gray-400);
 }
 
