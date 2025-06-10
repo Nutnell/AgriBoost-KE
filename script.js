@@ -392,43 +392,46 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 document.addEventListener("DOMContentLoaded", () => {
-    const audienceToggleButtons = document.querySelectorAll(".audience-toggle-button");
-    const audienceContents = document.querySelectorAll(".audience-content");
+    const toggleButtons = document.querySelectorAll(".audience-toggle-button");
+    const contents = document.querySelectorAll(".audience-content");
 
-    audienceToggleButtons.forEach(button => {
+    function setContentVisibility(targetId) {
+        contents.forEach(content => {
+            const isTarget = content.id === targetId;
+
+            content.classList.toggle("active-content", isTarget);
+            content.style.height = isTarget ? content.scrollHeight + "px" : "0";
+            content.style.opacity = isTarget ? "1" : "0";
+            content.style.marginTop = isTarget ? "32px" : "0";
+            void content.offsetWidth;
+
+            const handler = () => {
+                if (isTarget && content.classList.contains("active-content")) {
+                    content.style.height = "auto";
+                }
+                content.removeEventListener("transitionend", handler);
+            };
+            content.addEventListener("transitionend", handler);
+        });
+    }
+
+    const initial = document.querySelector(".audience-content.active-content");
+    if (initial) {
+        setContentVisibility(initial.id);
+    }
+
+    toggleButtons.forEach(button => {
         button.addEventListener("click", () => {
-            const targetAudienceId = button.dataset.audience + "-content";
-
-            audienceToggleButtons.forEach(btn => btn.classList.remove("active"));
+            toggleButtons.forEach(btn => btn.classList.remove("active"));
             button.classList.add("active");
 
-            audienceContents.forEach(content => {
-                content.classList.remove("active-content");
-                content.style.height = "0px";
-                content.style.opacity = "0";
-                content.style.marginTop = "0px";
-                void content.offsetWidth;
-            });
-
-            setTimeout(() => {
-                const targetContent = document.getElementById(targetAudienceId);
-                if (targetContent) {
-                    targetContent.classList.add("active-content");
-                    void targetContent.offsetWidth;
-                    targetContent.style.height = targetContent.scrollHeight + "px";
-
-                    const transitionEndHandler = () => {
-                        if (targetContent.classList.contains('active-content')) {
-                            targetContent.style.height = 'auto';
-                        }
-                        targetContent.removeEventListener('transitionend', transitionEndHandler);
-                    };
-                    targetContent.addEventListener('transitionend', transitionEndHandler);
-                }
-            }, 10);
+            const targetId = button.dataset.audience + "-content";
+            setContentVisibility(targetId);
         });
     });
+});
 
+document.addEventListener('DOMContentLoaded', function() {
     const initialActiveContent = document.querySelector(".audience-content.active-content");
     if (initialActiveContent) {
         initialActiveContent.style.height = initialActiveContent.scrollHeight + "px";
@@ -444,5 +447,63 @@ document.addEventListener("DOMContentLoaded", () => {
         };
         initialActiveContent.addEventListener('transitionend', initialTransitionEndHandler);
     }
-});
 
+    const toggleButtons = document.querySelectorAll('.audience-toggle-button');
+    
+    toggleButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const targetAudience = this.getAttribute('data-audience');
+
+            toggleButtons.forEach(btn => btn.classList.remove('active'));
+            this.classList.add('active');
+
+            const currentActiveContent = document.querySelector('.audience-content.active-content');
+            if (currentActiveContent) {
+                currentActiveContent.style.height = currentActiveContent.scrollHeight + "px";
+
+                void currentActiveContent.offsetWidth;
+                
+                currentActiveContent.style.height = "0";
+                currentActiveContent.style.opacity = "0";
+                currentActiveContent.style.marginTop = "0";
+                
+                const hideTransitionHandler = () => {
+                    currentActiveContent.classList.remove('active-content');
+                    currentActiveContent.removeEventListener('transitionend', hideTransitionHandler);
+
+                    showNewContent(targetAudience);
+                };
+                currentActiveContent.addEventListener('transitionend', hideTransitionHandler);
+            } else {
+
+                showNewContent(targetAudience);
+            }
+        });
+    });
+    
+    function showNewContent(audience) {
+        const newContent = document.getElementById(audience === 'students' ? 'student-content' : 'mentor-content');
+        
+        if (newContent && !newContent.classList.contains('active-content')) {
+            newContent.classList.add('active-content');
+
+            newContent.style.height = "0";
+            newContent.style.opacity = "0";
+            newContent.style.marginTop = "0";
+
+            void newContent.offsetWidth;
+            
+            newContent.style.height = newContent.scrollHeight + "px";
+            newContent.style.opacity = "1";
+            newContent.style.marginTop = "32px";
+            
+            const showTransitionHandler = () => {
+                if (newContent.classList.contains('active-content')) {
+                    newContent.style.height = 'auto';
+                }
+                newContent.removeEventListener('transitionend', showTransitionHandler);
+            };
+            newContent.addEventListener('transitionend', showTransitionHandler);
+        }
+    }
+});

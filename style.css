@@ -1574,7 +1574,6 @@ html.dark .audience-content-text {
     margin-top: 24px;
 }
 
-/* ICON CLASSES */
 .icon-chevron-left::before { content: '←'; }
 .icon-chevron-right::before { content: '→'; }
 .icon-quote::before { content: '‟'; }
