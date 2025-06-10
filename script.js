@@ -389,4 +389,60 @@ document.addEventListener("DOMContentLoaded", () => {
         emailInput.addEventListener("input", () => clearError(emailInput));
         messageTextarea.addEventListener("input", () => clearError(messageTextarea));
     }
-})
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+    const audienceToggleButtons = document.querySelectorAll(".audience-toggle-button");
+    const audienceContents = document.querySelectorAll(".audience-content");
+
+    audienceToggleButtons.forEach(button => {
+        button.addEventListener("click", () => {
+            const targetAudienceId = button.dataset.audience + "-content";
+
+            audienceToggleButtons.forEach(btn => btn.classList.remove("active"));
+            button.classList.add("active");
+
+            audienceContents.forEach(content => {
+                content.classList.remove("active-content");
+                content.style.height = "0px";
+                content.style.opacity = "0";
+                content.style.marginTop = "0px";
+                void content.offsetWidth;
+            });
+
+            setTimeout(() => {
+                const targetContent = document.getElementById(targetAudienceId);
+                if (targetContent) {
+                    targetContent.classList.add("active-content");
+                    void targetContent.offsetWidth;
+                    targetContent.style.height = targetContent.scrollHeight + "px";
+
+                    const transitionEndHandler = () => {
+                        if (targetContent.classList.contains('active-content')) {
+                            targetContent.style.height = 'auto';
+                        }
+                        targetContent.removeEventListener('transitionend', transitionEndHandler);
+                    };
+                    targetContent.addEventListener('transitionend', transitionEndHandler);
+                }
+            }, 10);
+        });
+    });
+
+    const initialActiveContent = document.querySelector(".audience-content.active-content");
+    if (initialActiveContent) {
+        initialActiveContent.style.height = initialActiveContent.scrollHeight + "px";
+        initialActiveContent.style.opacity = "1";
+        initialActiveContent.style.marginTop = "32px";
+        void initialActiveContent.offsetWidth;
+
+        const initialTransitionEndHandler = () => {
+            if (initialActiveContent.classList.contains('active-content')) {
+                initialActiveContent.style.height = 'auto';
+            }
+            initialActiveContent.removeEventListener('transitionend', initialTransitionEndHandler);
+        };
+        initialActiveContent.addEventListener('transitionend', initialTransitionEndHandler);
+    }
+});
+
