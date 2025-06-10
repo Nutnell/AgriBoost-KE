@@ -622,7 +622,7 @@ html.dark .products-services-section {
     line-height: 1.625;
 }
 html.dark .product-description-display {
-    color: var(--gray-300);
+    color: var(--gray-950);
 }
 
 .product-feature-highlight {
@@ -634,7 +634,7 @@ html.dark .product-description-display {
     border-color: var(--green-500);
 }
 html.dark .product-feature-highlight {
-    background-color: rgba(20, 83, 45, 0.3);
+    background-color: var(--gray-900);
 }
 
 .product-feature-title {
